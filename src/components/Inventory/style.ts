@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+const Container = styled.div`
     display: flex
+    flex-wrap: wrap
 `;
 
 const Items = styled.div`
@@ -9,4 +10,4 @@ const Items = styled.div`
 `;
 
 
-export {Wrapper, Items}
+export {Container, Items}

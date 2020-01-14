@@ -14,16 +14,16 @@ const Inventory: React.FC<IInventoryProps> = () => {
   const workers: IWorker[] = hasWorkers;
 
   return (
-    <Styled.Wrapper>
-      내 일손들
+    <Styled.Container>
+      <div>내 일손들</div>
       {workers && workers.map((worker, idx: number) => {
         return (
-          <div key={idx}>
+          <Styled.Items key={idx}>
             {worker.image}
-          </div>
+          </Styled.Items>
         )
       })}
-    </Styled.Wrapper>
+    </Styled.Container>
   )
 };
 

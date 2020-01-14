@@ -4,6 +4,7 @@ import {IWorker} from "../../types/worker.type";
 import Worker from "../Common/Worker";
 import useWorker from "../../hooks/useWorker";
 import useInventory from "../../hooks/useInventory";
+import useCounter from '../../hooks/useCounter';
 
 interface IShopProps {
 
@@ -13,11 +14,16 @@ interface IShopProps {
 const Shop: React.FC<IShopProps> = () => {
 
   const {workers} = useWorker();
+  const {count, onDecreaseBy} = useCounter();
   const {onAddWorkerToInventory} = useInventory();
 
 
 
   const addWorkerToInventory = (worker: IWorker) => {
+    if (worker.cost > count) {
+      return;
+    }
+    onDecreaseBy(worker.cost);
     onAddWorkerToInventory(worker);
   };
 
