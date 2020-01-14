@@ -26,7 +26,7 @@ const Shop: React.FC<IShopProps> = () => {
       여기는 상점
       {workers.map(worker => {
           return (
-            <div key={`${worker.name}${Date.now()}`}
+            <div key={worker.name}
                  onClick={() => addWorkerToInventory(worker)}>
               <Worker
                       image={worker.image}

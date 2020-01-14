@@ -20,34 +20,33 @@ type InventoryState = {
 
 
 const initialState: InventoryState = {
-  workers: [
-    {
-      id: 5,
-      image: 'a',
-      name: 'a',
-      cost: 5,
-      dks: 5
-    }
-  ]
+  workers: []
 };
 
 const inventory = (state: InventoryState = initialState, action: InventoryAction) => {
   switch (action.type) {
     case ADD_WORKER_TO_INVENTORY:
-      // const nextId = Math.max(...state.workers.map(worker => worker.id)) + 1;
-      const {image, name, cost, dks, id} = action.payload;
+      const nextId = Math.max(...state.workers.map(worker => worker.id)) + 1;
+      const {image, name, cost, dks, id} = action.payload;    
 
-      return state.workers.concat({
-        id,
+      const workers =  state.workers.push({
+        id: nextId,
         image,
         name,
         cost,
         dks
       });
 
+      return {
+        workers,
+        ...state
+      }
+
 
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import useInventory from "../../hooks/useInventory";
 import {IWorker} from "../../types/worker.type";
+import * as Styled from './style';
+
 
 interface IInventoryProps {
 
@@ -12,16 +14,16 @@ const Inventory: React.FC<IInventoryProps> = () => {
   const workers: IWorker[] = hasWorkers;
 
   return (
-    <div>
-      {workers && workers.map(worker => {
+    <Styled.Wrapper>
+      내 일손들
+      {workers && workers.map((worker, idx: number) => {
         return (
-          <div>
+          <div key={idx}>
             {worker.image}
           </div>
         )
       })}
-      inventor
-    </div>
+    </Styled.Wrapper>
   )
 };
 
