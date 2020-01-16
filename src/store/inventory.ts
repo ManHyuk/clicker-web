@@ -26,21 +26,24 @@ const initialState: InventoryState = {
 const inventory = (state: InventoryState = initialState, action: InventoryAction) => {
   switch (action.type) {
     case ADD_WORKER_TO_INVENTORY:
-      const nextId = Math.max(...state.workers.map(worker => worker.id)) + 1;
-      const {image, name, cost, dks, id} = action.payload;    
 
-      const workers =  state.workers.push({
-        id: nextId,
-        image,
-        name,
-        cost,
-        dks
-      });
+
+      const maxId = state.workers.length === 0 ? 0 : Math.max(...state.workers.map(worker => worker.id));
+      const nextId = maxId + 1;
+
+      const {image, name, cost, dks} = action.payload;
 
       return {
-        workers,
-        ...state
-      }
+        ...state,
+        workers: state.workers.concat({
+          id: nextId,
+          image,
+          name,
+          cost,
+          dks
+        }),
+
+      };
 
 
     default:

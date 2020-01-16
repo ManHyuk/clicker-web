@@ -16,7 +16,7 @@ const useCounter = () => {
   const onDecreaseBy = useCallback(
     (diff: number) => dispatch(decreaseBy(diff)),
     [dispatch]
-  )
+  );
 
   return {
     count,
