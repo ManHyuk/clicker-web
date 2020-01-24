@@ -3,6 +3,7 @@ import useInventory from "../../hooks/useInventory";
 import {IWorker} from "../../types/worker.type";
 import * as Styled from './style';
 import useCounter from "../../hooks/useCounter";
+import useInterval from "../../hooks/uesInterval";
 
 
 interface IInventoryProps {
@@ -11,26 +12,25 @@ interface IInventoryProps {
 
 const Inventory: React.FC<IInventoryProps> = () => {
 
-  const {hasWorkers} = useInventory();
+
   const {count, onIncreaseBy} = useCounter();
+  const {hasWorkers} = useInventory();
   const workers: IWorker[] = hasWorkers;
 
   const calcWorkerBonus = () => {
-    const dks = workers.reduce((acc: number, cur: IWorker) => {
+    return workers.reduce((acc: number, cur: IWorker) => {
       return acc + cur.dks
     }, 0);
-    console.log('dks', dks);
-    onIncreaseBy(dks);
+
   };
 
-  useEffect(() => {
-    calcWorkerBonus();
-    console.log('asdf');
-  }, [hasWorkers]);
 
+  useInterval(() => {
+    const bonusDks = calcWorkerBonus();
+    console.log(bonusDks);
+    onIncreaseBy(bonusDks);
+  }, 1000);
 
-  // calcWorkerBonus();
-  console.log('hasWorkers', hasWorkers);
 
   return (
     <Styled.Container>

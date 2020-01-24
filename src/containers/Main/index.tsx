@@ -11,10 +11,9 @@ const MainContainer: React.FC<IMainContainer> = () => {
 
   return (
     <div>
-      hi i am a main container
-      <Shop />
-      <Counter />
       <Inventory/>
+      <Counter />
+      <Shop />
     </div>
   )
 };

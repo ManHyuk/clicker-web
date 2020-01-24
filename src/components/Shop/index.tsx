@@ -13,7 +13,7 @@ interface IShopProps {
 
 const Shop: React.FC<IShopProps> = () => {
 
-  const {workers} = useWorker();
+  const {workers, onIncreaseWorkerCost} = useWorker();
   const {count, onDecreaseBy} = useCounter();
   const {onAddWorkerToInventory} = useInventory();
 
@@ -25,6 +25,7 @@ const Shop: React.FC<IShopProps> = () => {
     }
     onDecreaseBy(worker.cost);
     onAddWorkerToInventory(worker);
+    onIncreaseWorkerCost(worker);
   };
 
   return (
@@ -37,6 +38,7 @@ const Shop: React.FC<IShopProps> = () => {
               <Worker
                       image={worker.image}
                       name={worker.name}
+                      description={worker.description}
                       cost={worker.cost}
                       dks={worker.dks}
               />

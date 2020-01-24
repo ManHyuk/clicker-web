@@ -18,7 +18,8 @@ const Counter: React.FC<ICoinProps> = () => {
   const [bonusAutoCount, setBounusAutoCount] = useState(1);
 
   const clickCounter = () => {
-    onIncreaseBy(bonusClickCount)
+    // onIncreaseBy(bonusClickCount)
+    onIncrease();
   };
 
   useInterval(() => {

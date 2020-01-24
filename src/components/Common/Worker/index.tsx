@@ -6,15 +6,16 @@ import {IWorker} from "../../../types/worker.type";
 interface IWorkerProps {
   image: string
   name: string;
+  description: string;
   cost: number;
   dks: number;
   // onClick: (worker: IWorker) => void;
 }
 
-const Worker: React.FC<IWorkerProps> = ({image, name, cost, dks}) => {
+const Worker: React.FC<IWorkerProps> = ({image, name, description, cost, dks}) => {
   return (
     <Styled.Worker>
-      {image} / {name} / {cost} / {dks}dk/s
+      {image} / {name} / {description} / {cost} / {dks}dk/s
     </Styled.Worker>
   )
 };
