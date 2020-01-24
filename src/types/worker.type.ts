@@ -4,5 +4,5 @@ export interface IWorker {
   name: string;
   description: string;
   cost: number;
-  dks: number;
+  output: number;
 }

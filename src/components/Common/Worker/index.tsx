@@ -8,14 +8,14 @@ interface IWorkerProps {
   name: string;
   description: string;
   cost: number;
-  dks: number;
+  output: number;
   // onClick: (worker: IWorker) => void;
 }
 
-const Worker: React.FC<IWorkerProps> = ({image, name, description, cost, dks}) => {
+const Worker: React.FC<IWorkerProps> = ({image, name, description, cost, output}) => {
   return (
     <Styled.Worker>
-      {image} / {name} / {description} / {cost} / {dks}dk/s
+      {image} / {name} / {description} / {cost} / {output}op/s
     </Styled.Worker>
   )
 };

@@ -12,7 +12,7 @@ interface ICoinProps {
 const Counter: React.FC<ICoinProps> = () => {
   const DELAY: number = 1000;
 
-  const { count, onIncrease, onDecrease, onIncreaseBy } = useCounter();
+  const { count, bonusCount, onIncrease, onDecrease, onIncreaseBy } = useCounter();
 
   const [bonusClickCount, setBonusClickCount] = useState(1);
   const [bonusAutoCount, setBounusAutoCount] = useState(1);
@@ -23,14 +23,21 @@ const Counter: React.FC<ICoinProps> = () => {
   };
 
   useInterval(() => {
-    onIncreaseBy(bonusAutoCount)
+    // onIncreaseBy(bonusAutoCount)
+    onIncrease()
   }, DELAY);
 
 
 
   return (
     <div onClick={clickCounter}>
-      current coin is {count}
+      <div>
+        current coin is {count}
+      </div>
+      <div>
+        auto increase {bonusCount}/s
+      </div>
+      
       <Styled.Coin >
         <img src={rice} alt="coin"/>
       </Styled.Coin>

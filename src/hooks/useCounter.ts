@@ -1,10 +1,11 @@
 import { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
-import { increase, decrease, increaseBy, decreaseBy } from '../store/counter';
+import { increase, decrease, increaseBy, decreaseBy, increaseBonusCountBy } from '../store/counter';
 
 const useCounter = () => {
   const count = useSelector((state: RootState) => state.counter.count);
+  const bonusCount = useSelector((state: RootState) => state.counter.bonusCount);
   const dispatch = useDispatch();
 
   const onIncrease = useCallback(() => dispatch(increase()), [dispatch]);
@@ -18,12 +19,19 @@ const useCounter = () => {
     [dispatch]
   );
 
+  const onIncreaseBonusCountBy = useCallback(
+    (diff: number) => dispatch(increaseBonusCountBy(diff)),
+    [dispatch]
+  );
+
   return {
     count,
+    bonusCount,
     onIncrease,
     onDecrease,
     onIncreaseBy,
-    onDecreaseBy
+    onDecreaseBy,
+    onIncreaseBonusCountBy
   };
 };
 

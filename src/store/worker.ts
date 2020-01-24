@@ -32,7 +32,7 @@ const initialState: WorkerState = [
     name: '댕댕이',
     description: '서당 개 삼년이면 떡국을 만든다',
     cost: 1,
-    dks: 3
+    output: 3,
   },
   {
     id: 2,
@@ -40,7 +40,7 @@ const initialState: WorkerState = [
     name: '뽀시래기',
     description: '먹고 살라면 일해야지',
     cost: 50,
-    dks: 5
+    output: 50,
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ const initialState: WorkerState = [
     name: '급식동생',
     description: '세뱃돈을 받고싶다고? 그러면 떡국을 만들어라',
     cost: 70,
-    dks: 7
+    output: 70,
   },
   {
     id: 4,
@@ -56,7 +56,7 @@ const initialState: WorkerState = [
     name: '산타',
     description: '크리스마스 선물주러 왔다가 못돌아감',
     cost: 100,
-    dks: 10
+    output: 100,
   },
 
   {
@@ -65,7 +65,7 @@ const initialState: WorkerState = [
     name: '외계인',
     description: '요즘은 외계인 고문해서 떡국 만든다며?',
     cost: 150,
-    dks: 15
+    output: 150,
   },
 
 ];
@@ -74,14 +74,14 @@ const worker = (state: WorkerState = initialState, action: WorkersAction) => {
   switch (action.type) {
     case ADD_WORKER:
       const nextId = Math.max(...state.map(worker => worker.id)) + 1;
-      const {image, name, description, cost, dks} = action.payload;
+      const {image, name, description, cost, output} = action.payload;
       return state.concat({
         id: nextId,
         image,
         name,
         description,
         cost,
-        dks
+        output
       });
 
     case INCREASE_WORKER_COST:

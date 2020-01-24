@@ -31,16 +31,16 @@ const Shop: React.FC<IShopProps> = () => {
   return (
     <Styled.Item>
       여기는 상점
-      {workers.map(worker => {
+      {workers.map((worker: IWorker, idx: number) => {
           return (
-            <div key={worker.name}
+            <div key={`${worker.name}.${idx}`}
                  onClick={() => addWorkerToInventory(worker)}>
               <Worker
                       image={worker.image}
                       name={worker.name}
                       description={worker.description}
                       cost={worker.cost}
-                      dks={worker.dks}
+                      output={worker.output}
               />
             </div>
           )

@@ -13,22 +13,26 @@ interface IInventoryProps {
 const Inventory: React.FC<IInventoryProps> = () => {
 
 
-  const {count, onIncreaseBy} = useCounter();
+  const {count, onIncreaseBy, onIncreaseBonusCountBy} = useCounter();
   const {hasWorkers} = useInventory();
   const workers: IWorker[] = hasWorkers;
 
   const calcWorkerBonus = () => {
     return workers.reduce((acc: number, cur: IWorker) => {
-      return acc + cur.dks
+      return acc + cur.output
     }, 0);
-
   };
 
+  useEffect(() => {
+    const bonus = calcWorkerBonus();
+    console.log('bonuus', bonus);
+    onIncreaseBonusCountBy(bonus);
+  }, [workers])
 
   useInterval(() => {
-    const bonusDks = calcWorkerBonus();
-    console.log(bonusDks);
-    onIncreaseBy(bonusDks);
+    const bonus = calcWorkerBonus();
+    console.log('bonus output', bonus);
+    onIncreaseBy(bonus);
   }, 1000);
 
 
