@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Styled from './style';
-import {IWorker} from "../../../types/worker.type";
 
+import {IWorker} from "../../../types/worker.type";
 
 interface IWorkerProps {
   image: string
@@ -13,11 +13,15 @@ interface IWorkerProps {
 }
 
 const Worker: React.FC<IWorkerProps> = ({image, name, description, cost, output}) => {
-  return (
-    <Styled.Worker>
-      {image} / {name} / {description} / {cost} / {output}op/s
-    </Styled.Worker>
-  )
+    return (
+        <>
+            <Styled.Icon src={image} />
+            <Styled.Content>
+                <b>{name}</b> 💰{cost}
+                <br /> 월세 {output}원
+            </Styled.Content>
+        </>
+    )
 };
 
 

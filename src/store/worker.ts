@@ -1,10 +1,15 @@
 import {IWorker} from "../types/worker.type";
 
+import bedroom from '../static/bedroom.png';
+import home from '../static/home.png';
+import mansion from '../static/mansion.png';
+import apartment from '../static/apartment.png';
+import building from '../static/building.png';
+
 const ADD_WORKER = 'worker/ADD_WORKER' as const;
 const TOGGLE_WORKER = 'worker/ADD_WORKER' as const;
 const REMOVE_WORKER = 'worker/REMOVE_WORKER' as const;
 const INCREASE_WORKER_COST = 'worker/INCREASE_WORKER_COST' as const;
-
 
 
 
@@ -28,32 +33,32 @@ type WorkerState = IWorker[];
 const initialState: WorkerState = [
   {
     id: 1,
-    image: '🐶',
-    name: '댕댕이',
+    image: bedroom,
+    name: '원룸',
     description: '서당 개 삼년이면 떡국을 만든다',
     cost: 1,
     output: 3,
   },
   {
     id: 2,
-    image: '👶',
-    name: '뽀시래기',
+    image: home,
+    name: '집',
     description: '먹고 살라면 일해야지',
     cost: 50,
     output: 50,
   },
   {
     id: 3,
-    image: '🙇',
-    name: '급식동생',
+    image: mansion,
+    name: '저택',
     description: '세뱃돈을 받고싶다고? 그러면 떡국을 만들어라',
     cost: 70,
     output: 70,
   },
   {
     id: 4,
-    image: '🎅',
-    name: '산타',
+    image: apartment,
+    name: '아파트',
     description: '크리스마스 선물주러 왔다가 못돌아감',
     cost: 100,
     output: 100,
@@ -61,8 +66,8 @@ const initialState: WorkerState = [
 
   {
     id: 5,
-    image: '👽',
-    name: '외계인',
+    image: building,
+    name: '빌딩',
     description: '요즘은 외계인 고문해서 떡국 만든다며?',
     cost: 150,
     output: 150,

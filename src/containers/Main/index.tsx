@@ -1,22 +1,16 @@
-import React, {useState} from 'react';
-import Counter from "../../components/Counter";
-import Shop from "../../components/Shop";
+import React from "react";
+import * as Styled from './style';
+
+import SideBar from "../SideBar";
 import Inventory from "../../components/Inventory";
 
-interface IMainContainer {
+const Main = () => {
+    return (
+        <Styled.Container>
+            <SideBar />
+            <Inventory />
+        </Styled.Container>
+    )
 }
 
-
-const MainContainer: React.FC<IMainContainer> = () => {
-
-  return (
-    <div>
-      <Inventory/>
-      <Counter />
-      <Shop />
-    </div>
-  )
-};
-
-
-export default MainContainer;
+export default Main;

@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 
-const Worker = styled.div`
-  font-size: 20px;
+const Icon = styled.img`
+	width: 50px;
+	height: 50px;
 `;
 
-export {Worker};
+const Content = styled.p`
+	text-align: right;
+`;
+
+export { Icon, Content };
