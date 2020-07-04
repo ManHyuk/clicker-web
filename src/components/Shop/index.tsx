@@ -12,41 +12,37 @@ interface IShopProps {
 
 
 const Shop: React.FC<IShopProps> = () => {
+    const {workers, onIncreaseWorkerCost} = useWorker();
+    const {count, onDecreaseBy} = useCounter();
+    const {onAddWorkerToInventory} = useInventory();
 
-  const {workers, onIncreaseWorkerCost} = useWorker();
-  const {count, onDecreaseBy} = useCounter();
-  const {onAddWorkerToInventory} = useInventory();
+    const addWorkerToInventory = (worker: IWorker) => {
+      if (worker.cost > count) {
+        return;
+      }
+      onDecreaseBy(worker.cost);
+      onAddWorkerToInventory(worker);
+      onIncreaseWorkerCost(worker);
+    };
 
-
-
-  const addWorkerToInventory = (worker: IWorker) => {
-    if (worker.cost > count) {
-      return;
-    }
-    onDecreaseBy(worker.cost);
-    onAddWorkerToInventory(worker);
-    onIncreaseWorkerCost(worker);
-  };
-
-  return (
-    <Styled.Item>
-      여기는 상점
-      {workers.map((worker: IWorker, idx: number) => {
-          return (
-            <div key={`${worker.name}.${idx}`}
-                 onClick={() => addWorkerToInventory(worker)}>
-              <Worker
-                      image={worker.image}
-                      name={worker.name}
-                      description={worker.description}
-                      cost={worker.cost}
-                      output={worker.output}
-              />
-            </div>
-          )
-        })}
-    </Styled.Item>
-  )
+    return (
+        <Styled.List>
+            {workers.map((worker: IWorker, idx: number) => {
+                return (
+                    <Styled.Item key={`${worker.name}.${idx}`}
+                         onClick={() => addWorkerToInventory(worker)}>
+                        <Worker
+                                image={worker.image}
+                                name={worker.name}
+                                description={worker.description}
+                                cost={worker.cost}
+                                output={worker.output}
+                        />
+                    </Styled.Item>
+                )
+              })}
+        </Styled.List>
+    )
 };
 
 

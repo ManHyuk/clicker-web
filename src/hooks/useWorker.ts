@@ -4,8 +4,6 @@ import {RootState} from "../store";
 import {increaseWorkerCost} from "../store/worker";
 import {IWorker} from "../types/worker.type";
 
-
-
 const useWorker = () => {
 
   const dispatch = useDispatch();

@@ -1,0 +1,22 @@
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: none;
+    scroll-behavior: smooth;
+}
+
+html, body, #root, .App {
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+}
+
+img {
+    user-select: none;
+    -webkit-user-drag: none;
+}

@@ -11,43 +11,37 @@ interface IInventoryProps {
 }
 
 const Inventory: React.FC<IInventoryProps> = () => {
+    const {count, onIncreaseBy, onIncreaseBonusCountBy} = useCounter();
+    const {hasWorkers} = useInventory();
+    const workers: IWorker[] = hasWorkers;
 
+    const calcWorkerBonus = () => {
+        return workers.reduce((acc: number, cur: IWorker) => {
+            return acc + cur.output
+        }, 0);
+    };
 
-  const {count, onIncreaseBy, onIncreaseBonusCountBy} = useCounter();
-  const {hasWorkers} = useInventory();
-  const workers: IWorker[] = hasWorkers;
+    useEffect(() => {
+        const bonus = calcWorkerBonus();
+        console.log('bonuus', bonus);
+        onIncreaseBonusCountBy(bonus);
+    }, [workers])
 
-  const calcWorkerBonus = () => {
-    return workers.reduce((acc: number, cur: IWorker) => {
-      return acc + cur.output
-    }, 0);
-  };
+    useInterval(() => {
+        const bonus = calcWorkerBonus();
+        console.log('bonus output', bonus);
+        onIncreaseBy(bonus);
+    }, 1000);
 
-  useEffect(() => {
-    const bonus = calcWorkerBonus();
-    console.log('bonuus', bonus);
-    onIncreaseBonusCountBy(bonus);
-  }, [workers])
-
-  useInterval(() => {
-    const bonus = calcWorkerBonus();
-    console.log('bonus output', bonus);
-    onIncreaseBy(bonus);
-  }, 1000);
-
-
-  return (
-    <Styled.Container>
-      <div>내 일손들</div>
-      {workers && workers.map((worker, idx: number) => {
-        return (
-          <Styled.Items key={idx}>
-            {worker.image}
-          </Styled.Items>
-        )
-      })}
-    </Styled.Container>
-  )
+    return (
+        <Styled.Container>
+            {workers && workers.map((worker, idx: number) => {
+                return (
+                    <Styled.Icon key={idx} src={worker.image} />
+                )
+            })}
+        </Styled.Container>
+    )
 };
 
 
