@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import piggyBank from '../../static/piggyBank.png';
 
 const Container = styled.div`
     display: flex;
@@ -13,10 +14,9 @@ const PiggyBank = styled.img`
 	width: 150px;
 	height: 150px;
 	cursor: pointer;
-	transform: scale(0.9);
 	
-	&:hover {
-		transform: scale(1);
+	&:hover, &:focus {
+		content: url(${piggyBank});
 	}
 `;
 
